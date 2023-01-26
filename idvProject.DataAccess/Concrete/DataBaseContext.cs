@@ -10,14 +10,11 @@ namespace idvProject.DataAccess.Concrete
 {
     public class DataBaseContext : DbContext
     {
-        public DataBaseContext(DbContextOptions options) : base(options)
+        public DataBaseContext() : base()
         {
             
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Project;Trusted_Connection=true");
-        }
+
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Movie> Movies { get; set; }

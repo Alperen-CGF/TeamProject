@@ -1,4 +1,4 @@
-﻿using idvProject.Core.Concrete;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,7 +21,7 @@ namespace idvProject.Entities.Concrete
         public string? Description { get; set; }
 
         [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
     }

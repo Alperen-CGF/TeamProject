@@ -1,5 +1,4 @@
-﻿using idvProject.Core.Abstract;
-using idvProject.Core.Concrete;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

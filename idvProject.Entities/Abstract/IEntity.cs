@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace idvProject.Core.Abstract
+namespace idvProject.Entities.Abstract
 {
     public interface IEntity
     {

@@ -1,4 +1,4 @@
-﻿using idvProject.Core.Concrete;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ namespace idvProject.Entities.Concrete
 {
     public class UserRole : BaseEntity
     {
-        public int UserId { get; set; }
-        public int RoleId { get; set; }
+        public Guid UserId { get; set; }
+        public Guid RoleId { get; set; }
         public Role Roles { get; set; }
         public User Users { get; set; }
     }
