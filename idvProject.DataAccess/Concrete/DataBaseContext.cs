@@ -10,6 +10,10 @@ namespace idvProject.DataAccess.Concrete
 {
     public class DataBaseContext : DbContext
     {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-J7U6SM8;Database=IDVDB;Trusted_Connection=true;trustServerCertificate=true");
+        }
         public DataBaseContext() : base()
         {
             

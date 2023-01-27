@@ -11,7 +11,7 @@ namespace idvProject.Business.Abstract
     {
         List<Role> GetAll();
         void RoleAdd(Role role);
-        Role GetById(int id);
+        Role GetById(Guid id);
         void RoleDelete(Role role);
         void RoleUpdate(Role role);
     }

@@ -1,4 +1,6 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.DataAccess.Abstract;
+using idvProject.DataAccess.EntityFramework;
 using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,54 +12,35 @@ namespace idvProject.Business.Concrete
 {
     public class UserManager : IUserService
     {
-        public List<User> GetAll()
+        private readonly IUserDal _userDal;
+        public UserManager(IUserDal userDal)
         {
-            throw new NotImplementedException();
+            _userDal = userDal;
         }
 
-        public User GetById(int id)
+        public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return _userDal.GetAll();
+        }
+
+        public User GetById(Guid id)
+        {
+            return _userDal.Get(x => x.Id == id);
         }
 
         public void UserAdd(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Insert(user);
         }
 
         public void UserDelete(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public void UserRoleAdd(UserRole userRole)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UserRoleDelete(UserRole userRole)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UserRoleUpdate(UserRole userRole)
-        {
-            throw new NotImplementedException();
+            _userDal.Delete(user);
         }
 
         public void UserUpdate(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        List<UserRole> IUserService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        UserRole IUserService.GetById(int id)
-        {
-            throw new NotImplementedException();
+            _userDal.Update(user);
         }
     }
 }

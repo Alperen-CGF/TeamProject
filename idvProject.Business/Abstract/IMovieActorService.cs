@@ -11,7 +11,7 @@ namespace idvProject.Business.Abstract
     {
         List<MovieActor> GetAll();
         void MovieActorAdd(MovieActor movieActor);
-        MovieActor GetById(int id);
+        MovieActor GetById(Guid id);
         void MovieActorDelete(MovieActor movieActor);
         void MovieActorUpdate(MovieActor movieActor);
     }

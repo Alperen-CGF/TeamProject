@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\idvProject.Business\idvProject.Business.csproj" />
     <ProjectReference Include="..\idvProject.DataAccess\idvProject.DataAccess.csproj" />
   </ItemGroup>
 

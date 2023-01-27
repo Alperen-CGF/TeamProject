@@ -11,9 +11,9 @@ namespace idvProject.Business.Abstract
     public interface IMovieService
     {
         List<Movie> GetAll();
-        List<Movie> GetListByCategoryId(int id);
+        List<Movie> GetListByCategoryId(Guid id);
         void MovieAdd(Movie movie);
-        Movie GetById(int id);
+        Movie GetById(Guid id);
         void MovieDelete(Movie movie);
         void MovieUpdate(Movie movie);
     }

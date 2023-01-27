@@ -11,7 +11,7 @@ namespace idvProject.Business.Abstract
     {
         List<User> GetAll();
         void UserAdd(User user);
-        User GetById(int id);
+        User GetById(Guid id);
         void UserDelete(User user);
         void UserUpdate(User user);
     }

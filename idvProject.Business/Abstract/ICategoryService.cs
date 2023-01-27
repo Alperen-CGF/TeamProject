@@ -11,7 +11,7 @@ namespace idvProject.Business.Abstract
     {
         List<Category> GetAll();
         void CategoryAdd(Category category);
-        Category GetById(int id);
+        Category GetById(Guid id);
         void CategoryDelete(Category category);
         void CategoryUpdate(Category category);
     }

@@ -1,7 +1,10 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.DataAccess.Abstract;
+using idvProject.DataAccess.EntityFramework;
 using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,34 +13,39 @@ namespace idvProject.Business.Concrete
 {
     public class MovieManager : IMovieService
     {
+        private readonly IMovieDal _movieDal;
+        public MovieManager(IMovieDal movieDal)
+        {
+            _movieDal = movieDal;
+        }
         public List<Movie> GetAll()
         {
-            throw new NotImplementedException();
+            return _movieDal.GetAll();
         }
 
-        public Movie GetById(int id)
+        public Movie GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _movieDal.Get(x => x.Id == id);
         }
 
-        public List<Movie> GetListByCategoryId(int id)
+        public List<Movie> GetListByCategoryId(Guid id)
         {
-            throw new NotImplementedException();
+            return _movieDal.List(x => x.CategoryId == id);
         }
 
         public void MovieAdd(Movie movie)
         {
-            throw new NotImplementedException();
+            _movieDal.Insert(movie);
         }
 
         public void MovieDelete(Movie movie)
         {
-            throw new NotImplementedException();
+            _movieDal.Delete(movie);
         }
 
         public void MovieUpdate(Movie movie)
         {
-            throw new NotImplementedException();
+            _movieDal.Update(movie);
         }
     }
 }

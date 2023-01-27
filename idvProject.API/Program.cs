@@ -1,4 +1,8 @@
+using idvProject.Business.Abstract;
+using idvProject.Business.Concrete;
+using idvProject.DataAccess.Abstract;
 using idvProject.DataAccess.Concrete;
+using idvProject.DataAccess.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,12 +13,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<DataBaseContext>(opts =>
-{
-    opts.UseSqlServer(@"Server=DESKTOP-J7U6SM8;Database=IDVDB;Trusted_Connection=true;trustServerCertificate=true");
-    //opts.UseLazyLoadingProxies();   
-});
+builder.Services.AddScoped<IRoleService, RoleManager>();
+builder.Services.AddScoped<IRoleDal,EfRoleDal>();
+//builder.Services.AddDbContext<DataBaseContext>(opts =>
+//{
+//    opts.UseSqlServer(@"Server=DESKTOP-J7U6SM8;Database=IDVDB;Trusted_Connection=true;trustServerCertificate=true");
+//    //opts.UseLazyLoadingProxies();   
+//});
 
 var app = builder.Build();
 

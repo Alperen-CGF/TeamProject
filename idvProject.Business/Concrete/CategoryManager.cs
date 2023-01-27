@@ -1,4 +1,6 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.DataAccess.Abstract;
+using idvProject.DataAccess.EntityFramework;
 using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +12,34 @@ namespace idvProject.Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
+        private readonly ICategoryDal _categoryDal;
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal;
+        }
         public void CategoryAdd(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Insert(category);
         }
 
         public void CategoryDelete(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(category);
         }
 
         public void CategoryUpdate(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(category);
         }
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
-        public Category GetById(int id)
+        public Category GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.Get(x => x.Id == id);
         }
     }
 }
