@@ -20,19 +20,19 @@ namespace idvProject.API.Controllers
             List<Actor> result = _actorService.GetAll();
             return Ok(result);
         }
-        [HttpPost("AddRole")]
+        [HttpPost("AddActor")]
         public IActionResult AddActor(Actor actor)
         {
             _actorService.ActorAdd(actor);
             return Ok();
         }
-        [HttpDelete("DeleteRole")]
+        [HttpDelete("DeleteActor")]
         public IActionResult DeleteActor(Actor actor)
         {
             _actorService.ActorDelete(actor);
             return Ok();
         }
-        [HttpPut("UpdateRole")]
+        [HttpPut("UpdateActor")]
         public IActionResult UpdateActor(Actor actor)
         {
             _actorService.ActorUpdate(actor);

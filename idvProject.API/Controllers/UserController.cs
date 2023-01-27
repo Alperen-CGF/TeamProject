@@ -21,19 +21,19 @@ namespace idvProject.API.Controllers
             return Ok(result);
         }
         [HttpPost("AddRole")]
-        public IActionResult AddRole(User user)
+        public IActionResult AddUser(User user)
         {
             _userService.UserAdd(user);
             return Ok();
         }
         [HttpDelete("DeleteRole")]
-        public IActionResult DeleteRole(User user)
+        public IActionResult DeleteUser(User user)
         {
             _userService.UserDelete(user);
             return Ok();
         }
         [HttpPut("UpdateRole")]
-        public IActionResult UpdateRole(User user)
+        public IActionResult UpdateUser(User user)
         {
             _userService.UserUpdate(user);
             return Ok();
