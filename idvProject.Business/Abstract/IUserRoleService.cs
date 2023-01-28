@@ -1,4 +1,5 @@
-﻿using idvProject.Entities.Concrete;
+﻿using idvProject.Core.Utilities.Results;
+using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace idvProject.Business.Abstract
 {
     public interface IUserRoleService
     {
-        List<UserRole> GetAll();
-        void UserRoleAdd(UserRole userRole);
-        UserRole GetById(Guid id);
-        void UserRoleDelete(UserRole userRole);
-        void UserRoleUpdate(UserRole userRole);
+        IDataResult<List<UserRole>> GetAll();
+        IResult UserRoleAdd(UserRole userRole);
+        IDataResult<UserRole> GetById(Guid id);
+        IResult UserRoleDelete(UserRole userRole);
+        IResult UserRoleUpdate(UserRole userRole);
     }
 }

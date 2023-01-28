@@ -10,10 +10,13 @@ namespace idvProject.DataAccess.Concrete
 {
     public class DataBaseContext : DbContext
     {
+        //Mssql ve In-Memory Test
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-J7U6SM8;Database=IDVDB;Trusted_Connection=true;trustServerCertificate=true");
+            //optionsBuilder.UseInMemoryDatabase("InMemoryDatabase");
         }
+
         public DataBaseContext() : base()
         {
             

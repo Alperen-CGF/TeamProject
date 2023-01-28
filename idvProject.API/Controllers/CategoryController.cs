@@ -1,7 +1,9 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace idvProject.API.Controllers
 {
@@ -17,7 +19,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            List<Category> result = _categoryService.GetAll();
+            IDataResult < List <Category>> result = _categoryService.GetAll();
             return Ok(result);
         }
         [HttpPost("AddCategory")]
@@ -41,7 +43,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            Category result = _categoryService.GetById(id);
+            IDataResult <Category> result = _categoryService.GetById(id);
             return Ok(result);
         }
     }

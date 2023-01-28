@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\idvProject.Core\idvProject.Core.csproj" />
     <ProjectReference Include="..\idvProject.DataAccess\idvProject.DataAccess.csproj" />
     <ProjectReference Include="..\idvProject.Entities\idvProject.Entities.csproj" />
   </ItemGroup>

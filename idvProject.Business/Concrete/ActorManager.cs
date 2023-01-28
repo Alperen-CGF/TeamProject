@@ -1,4 +1,5 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.DataAccess.Abstract;
 using idvProject.DataAccess.EntityFramework;
 using idvProject.Entities.Concrete;
@@ -17,29 +18,32 @@ namespace idvProject.Business.Concrete
         {
             _actorDal = actorDal;
         }
-        public void ActorAdd(Actor actor)
+        public IResult ActorAdd(Actor actor)
         {
             _actorDal.Insert(actor);
+            return new SuccessResult("Actor Başarılı Bir Şekilde Eklendi.");
         }
 
-        public void ActorDelete(Actor actor)
+        public IResult ActorDelete(Actor actor)
         {
             _actorDal.Delete(actor);
+            return new SuccessResult("Actor Başarılı Bir Şekilde Silindi.");
         }
 
-        public void ActorUpdate(Actor actor)
+        public IResult ActorUpdate(Actor actor)
         {
             _actorDal.Update(actor);
+            return new SuccessResult("Actor Başarılı Bir Şekilde Güncellendi.");
         }
 
-        public List<Actor> GetAll()
+        public IDataResult<List<Actor>> GetAll()
         {
-            return _actorDal.GetAll();
+            return new SuccessDataResult<List<Actor>>(_actorDal.GetAll());
         }
 
-        public Actor GetById(Guid id)
+        public IDataResult<Actor> GetById(Guid id)
         {
-            return _actorDal.Get(x => x.Id == id);
+            return new SuccessDataResult<Actor>(_actorDal.Get(x => x.Id == id));
         }
     }
 }

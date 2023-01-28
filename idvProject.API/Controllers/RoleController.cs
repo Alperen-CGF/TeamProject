@@ -1,4 +1,5 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -18,7 +19,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            List<Role> result = _roleService.GetAll();
+            IDataResult<List<Role>> result = _roleService.GetAll();
             return Ok(result);
         }
         [HttpPost("AddRole")]
@@ -42,7 +43,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            Role result = _roleService.GetById(id);
+            IDataResult<Role> result = _roleService.GetById(id);
             return Ok(result);
         }
     }

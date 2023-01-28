@@ -9,5 +9,6 @@ namespace idvProject.DataAccess.Abstract
 {
     public interface IRoleDal : IRepository<Role>
     {
+        void AddMemory(Role role);
     }
 }

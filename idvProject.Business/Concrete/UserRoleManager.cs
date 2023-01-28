@@ -1,5 +1,7 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.DataAccess.Abstract;
+using idvProject.DataAccess.EntityFramework;
 using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -16,29 +18,32 @@ namespace idvProject.Business.Concrete
         {
             _userRoleDal= userRoleDal;
         }
-        public List<UserRole> GetAll()
+        public IDataResult<List<UserRole>> GetAll()
         {
-            return _userRoleDal.GetAll();
+            return new SuccessDataResult<List<UserRole>>(_userRoleDal.GetAll());
         }
 
-        public UserRole GetById(Guid id)
+        public IDataResult<UserRole> GetById(Guid id)
         {
-            return _userRoleDal.Get(x=>x.Id == id);
+            return new SuccessDataResult<UserRole>(_userRoleDal.Get(x=>x.Id == id));
         }
 
-        public void UserRoleAdd(UserRole userRole)
+        public IResult UserRoleAdd(UserRole userRole)
         {
             _userRoleDal.Insert(userRole);
+            return new SuccessResult("UserRole Başarılı Bir Şekilde Eklendi.");
         }
 
-        public void UserRoleDelete(UserRole userRole)
+        public IResult UserRoleDelete(UserRole userRole)
         {
             _userRoleDal.Delete(userRole);
+            return new SuccessResult("UserRole Başarılı Bir Şekilde Silindi.");
         }
 
-        public void UserRoleUpdate(UserRole userRole)
+        public IResult UserRoleUpdate(UserRole userRole)
         {
             _userRoleDal.Update(userRole);
+            return new SuccessResult("UserRole Başarılı Bir Şekilde Güncellendi.");
         }
     }
 }

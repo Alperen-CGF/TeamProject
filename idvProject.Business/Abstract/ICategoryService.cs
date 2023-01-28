@@ -1,4 +1,5 @@
-﻿using idvProject.Entities.Concrete;
+﻿using idvProject.Core.Utilities.Results;
+using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace idvProject.Business.Abstract
 {
     public interface ICategoryService
     {
-        List<Category> GetAll();
-        void CategoryAdd(Category category);
-        Category GetById(Guid id);
-        void CategoryDelete(Category category);
-        void CategoryUpdate(Category category);
+        IDataResult<List<Category>> GetAll();
+        IResult CategoryAdd(Category category);
+        IDataResult<Category> GetById(Guid id);
+        IResult CategoryDelete(Category category);
+        IResult CategoryUpdate(Category category);
     }
 }

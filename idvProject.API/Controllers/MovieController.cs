@@ -1,7 +1,9 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace idvProject.API.Controllers
 {
@@ -17,7 +19,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            List<Movie> result = _movieService.GetAll();
+            IDataResult<List<Movie>> result = _movieService.GetAll();
             return Ok(result);
         }
         [HttpPost("AddMovie")]
@@ -41,7 +43,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            Movie result = _movieService.GetById(id);
+            IDataResult<Movie> result = _movieService.GetById(id);
             return Ok(result);
         }
     }

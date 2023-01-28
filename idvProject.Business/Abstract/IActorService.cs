@@ -1,4 +1,5 @@
-﻿using idvProject.Entities.Concrete;
+﻿using idvProject.Core.Utilities.Results;
+using idvProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace idvProject.Business.Abstract
 {
     public interface IActorService
     {
-        List<Actor> GetAll();
-        void ActorAdd(Actor actor);
-        Actor GetById(Guid id);
-        void ActorDelete(Actor actor);
-        void ActorUpdate(Actor actor);
+        IDataResult<List<Actor>> GetAll();
+        IResult ActorAdd(Actor actor);
+        IDataResult<Actor> GetById(Guid id);
+        IResult ActorDelete(Actor actor);
+        IResult ActorUpdate(Actor actor);
     }
 }

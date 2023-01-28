@@ -1,4 +1,5 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.DataAccess.Abstract;
 using idvProject.DataAccess.EntityFramework;
 using idvProject.Entities.Concrete;
@@ -18,34 +19,37 @@ namespace idvProject.Business.Concrete
         {
             _movieDal = movieDal;
         }
-        public List<Movie> GetAll()
+        public IDataResult<List<Movie>> GetAll()
         {
-            return _movieDal.GetAll();
+            return new SuccessDataResult<List<Movie>>(_movieDal.GetAll());
         }
 
-        public Movie GetById(Guid id)
+        public IDataResult<Movie> GetById(Guid id)
         {
-            return _movieDal.Get(x => x.Id == id);
+            return new SuccessDataResult<Movie>(_movieDal.Get(x => x.Id == id));
         }
 
-        public List<Movie> GetListByCategoryId(Guid id)
+        public IDataResult<List<Movie>> GetListByCategoryId(Guid id)
         {
-            return _movieDal.List(x => x.CategoryId == id);
+            return new SuccessDataResult<List<Movie>>(_movieDal.List(x => x.CategoryId == id));
         }
 
-        public void MovieAdd(Movie movie)
+        public IResult MovieAdd(Movie movie)
         {
             _movieDal.Insert(movie);
+            return new SuccessResult("Movie Başarılı Bir Şekilde Eklendi.");
         }
 
-        public void MovieDelete(Movie movie)
+        public IResult MovieDelete(Movie movie)
         {
             _movieDal.Delete(movie);
+            return new SuccessResult("Movie Başarılı Bir Şekilde Silindi.");
         }
 
-        public void MovieUpdate(Movie movie)
+        public IResult MovieUpdate(Movie movie)
         {
             _movieDal.Update(movie);
+            return new SuccessResult("Movie Başarılı Bir Şekilde Güncellendi.");
         }
     }
 }

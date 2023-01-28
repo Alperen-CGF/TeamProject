@@ -1,7 +1,9 @@
 ﻿using idvProject.Business.Abstract;
+using idvProject.Core.Utilities.Results;
 using idvProject.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace idvProject.API.Controllers
 {
@@ -17,22 +19,22 @@ namespace idvProject.API.Controllers
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
-            List<User> result = _userService.GetAll();
+            IDataResult < List <User>> result = _userService.GetAll();
             return Ok(result);
         }
-        [HttpPost("AddRole")]
+        [HttpPost("AddUser")]
         public IActionResult AddUser(User user)
         {
             _userService.UserAdd(user);
             return Ok();
         }
-        [HttpDelete("DeleteRole")]
+        [HttpDelete("DeleteUser")]
         public IActionResult DeleteUser(User user)
         {
             _userService.UserDelete(user);
             return Ok();
         }
-        [HttpPut("UpdateRole")]
+        [HttpPut("UpdateUser")]
         public IActionResult UpdateUser(User user)
         {
             _userService.UserUpdate(user);
@@ -41,7 +43,7 @@ namespace idvProject.API.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(Guid id)
         {
-            User result = _userService.GetById(id);
+            IDataResult < User> result = _userService.GetById(id);
             return Ok(result);
         }
     }
