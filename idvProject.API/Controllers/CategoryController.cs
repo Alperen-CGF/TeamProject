@@ -1,5 +1,6 @@
 ﻿using idvProject.Business.Abstract;
 using idvProject.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,30 +16,35 @@ namespace idvProject.API.Controllers
             _categoryService = categoryService;
         }
         [HttpGet("GetAll")]
+        [Authorize(Roles =("user,admin"))]
         public IActionResult GetAll()
         {
             List<Category> result = _categoryService.GetAll();
             return Ok(result);
         }
         [HttpPost("AddCategory")]
+        [Authorize(Roles = ("admin"))]
         public IActionResult AddCategory(Category category)
         {
             _categoryService.CategoryAdd(category);
             return Ok();
         }
         [HttpDelete("DeleteCategory")]
+        [Authorize(Roles = ("admin"))]
         public IActionResult DeleteCategory(Category category)
         {
             _categoryService.CategoryDelete(category);
             return Ok();
         }
         [HttpPut("UpdateCategory")]
+        [Authorize(Roles = ("admin"))]
         public IActionResult UpdateCategory(Category category)
         {
             _categoryService.CategoryUpdate(category);
             return Ok();
         }
         [HttpGet("GetById")]
+        [Authorize(Roles = ("user,admin"))]
         public IActionResult GetById(Guid id)
         {
             Category result = _categoryService.GetById(id);

@@ -14,7 +14,7 @@ namespace idvProject.Business.Concrete
         private readonly IUserRoleDal _userRoleDal;
         public UserRoleManager(IUserRoleDal userRoleDal)
         {
-            _userRoleDal= userRoleDal;
+            _userRoleDal = userRoleDal;
         }
         public List<UserRole> GetAll()
         {
@@ -23,7 +23,12 @@ namespace idvProject.Business.Concrete
 
         public UserRole GetById(Guid id)
         {
-            return _userRoleDal.Get(x=>x.Id == id);
+            return _userRoleDal.Get(x => x.Id == id);
+        }
+
+        public List<UserRole> GetByUserId(Guid userId)
+        {
+            return _userRoleDal.GetByUserId(x => x.UserId == userId);
         }
 
         public void UserRoleAdd(UserRole userRole)

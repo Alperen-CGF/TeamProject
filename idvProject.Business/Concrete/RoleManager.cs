@@ -28,6 +28,11 @@ namespace idvProject.Business.Concrete
             return _roleDal.Get(x => x.Id == id);
         }
 
+        public Role GetRole(string name)
+        {
+            return _roleDal.Get(x => x.Name == name);
+        }
+
         public void RoleAdd(Role role)
         {
             _roleDal.Insert(role);

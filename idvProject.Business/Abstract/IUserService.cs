@@ -14,5 +14,6 @@ namespace idvProject.Business.Abstract
         User GetById(Guid id);
         void UserDelete(User user);
         void UserUpdate(User user);
+        User GetByName(string name);    
     }
 }

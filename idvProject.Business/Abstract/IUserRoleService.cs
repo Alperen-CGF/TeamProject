@@ -12,6 +12,7 @@ namespace idvProject.Business.Abstract
         List<UserRole> GetAll();
         void UserRoleAdd(UserRole userRole);
         UserRole GetById(Guid id);
+        List<UserRole> GetByUserId(Guid userId);
         void UserRoleDelete(UserRole userRole);
         void UserRoleUpdate(UserRole userRole);
     }

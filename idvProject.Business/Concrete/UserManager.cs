@@ -28,6 +28,11 @@ namespace idvProject.Business.Concrete
             return _userDal.Get(x => x.Id == id);
         }
 
+        public User GetByName(string name)
+        {
+            return _userDal.Get(x => x.UserName == name);
+        }
+
         public void UserAdd(User user)
         {
             _userDal.Insert(user);
