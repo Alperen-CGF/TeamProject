@@ -14,6 +14,6 @@ namespace idvProject.Entities.Concrete
         [StringLength(50)]
         [Required]
         public string Name { get; set; }
-        public ICollection<Movie> Movies { get; set;}
+        public ICollection<Movie>? Movies { get; set;}
     }
 }

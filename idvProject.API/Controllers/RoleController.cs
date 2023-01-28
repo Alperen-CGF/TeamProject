@@ -1,14 +1,17 @@
 ﻿using idvProject.Business.Abstract;
 using idvProject.Core.Utilities.Results;
 using idvProject.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace idvProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "admin")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleService _roleService;
@@ -46,5 +49,6 @@ namespace idvProject.API.Controllers
             IDataResult<Role> result = _roleService.GetById(id);
             return Ok(result);
         }
+
     }
 }

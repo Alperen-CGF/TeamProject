@@ -16,7 +16,7 @@ namespace idvProject.Business.Concrete
         private readonly IUserRoleDal _userRoleDal;
         public UserRoleManager(IUserRoleDal userRoleDal)
         {
-            _userRoleDal= userRoleDal;
+            _userRoleDal = userRoleDal;
         }
         public IDataResult<List<UserRole>> GetAll()
         {
