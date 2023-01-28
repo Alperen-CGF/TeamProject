@@ -10,12 +10,14 @@ namespace idvProject.Entities.Concrete
 {
     public class User : BaseEntity
     {
-        public string? NameSurname { get; set; }
+
         [Required]
         public string UserName { get; set; }
         [Required]
         public string Mail { get; set; }
         [Required]
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+        [Required]
+        public byte[] PasswordSalt { get; set; }
     }
 }
